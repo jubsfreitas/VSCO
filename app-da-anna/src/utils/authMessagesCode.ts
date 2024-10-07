@@ -1,0 +1,20 @@
+export const authMessageByCode: Record<string, string> = {
+    'auth/email-already-in-use': 'Email já cadastrado.',
+    'auth/invalid-email': 'Email inválido.',
+    'auth/operation-not-allowed': 'Operação não permitida.',
+    'auth/weak-password': 'Senha fraca.',
+    'auth/user-disabled': 'Usuário desativado.',
+    'auth/invalid-verification-code': 'Código de verificação inválido.',
+    'auth/user-not-found': 'Credenciais incorretas.',
+    'auth/wrong-password': 'Credenciais incorretas.',
+    'auth/too-many-requests': 'Muitas tentativas de login.',
+    'auth/expired-action-code': 'Código de verificação expirado.',
+    'auth/invalid-action-code': 'Código de verificação inválido.',
+    'auth/invalid-credential': 'Credenciais inválidas.',
+    'auth/invalid-verification-id': 'Código de verificação inválido.',
+    'auth/missing-verification-id': 'Código de verificação inválido.',
+    'auth/app-deleted': 'Aplicativo excluído.',
+    'auth/app-not-authorized': 'Aplicativo não autorizado.',
+    'auth/argument-error': 'Erro de argumento.',
+  };
+  
