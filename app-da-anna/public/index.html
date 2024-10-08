@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados dos Sensores</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('sensorData', (data) => {
+            const sensorDataElement = document.getElementById('sensor-data');
+            sensorDataElement.innerText = data; // Atualiza a exibição dos dados no HTML
+        });
+    </script>
+</head>
+<body>
+    <h1>Dados dos Sensores</h1>
+    <div id="sensor-data">Esperando dados dos sensores...</div>
+</body>
+</html>

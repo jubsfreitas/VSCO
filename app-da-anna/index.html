@@ -1,13 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VSCO</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      socket.on('sensorData', (data) => {
+        const sensorDataElement = document.getElementById('sensor-data');
+        sensorDataElement.innerText = data; // Atualiza a exibição dos dados no HTML
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- <div id="sensor-data">Esperando dados dos sensores...</div> -->
   </body>
 </html>

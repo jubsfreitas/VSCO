@@ -9,10 +9,11 @@ const ListContainer = styled.div`
   padding: 20px;
   border-radius: 10px;
   flex-grow: 1;
-  background-color: #f5f7fa;
+  /* background-color: #f5f7fa; */
   /* padding: 20px; */
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  max-width: 1583px;
 `;
 
 const ItemRow = styled.div`

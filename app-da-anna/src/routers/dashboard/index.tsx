@@ -26,6 +26,7 @@ const Content = styled.div`
   flex-direction: column;
   gap: 20px;
   margin-top: 60px;
+  max-width: 2000px;
 `;
 
 const Container = styled.div`
@@ -104,7 +105,7 @@ const Dashboard: React.FC = () => {
       <DashboardContainer>
         <Content>
           <DashboardHeader />
-          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '20px'}}>
             <Container>
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
                 <p>Nosso time:</p>
@@ -126,7 +127,7 @@ const Dashboard: React.FC = () => {
               </ImageContainer>
             </Container>
           </div>
-          <div style={{display: 'flex', alignItems: 'center', justifyContent: "space-around"}}>
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: "start"}}>
             <BarGraph />
             <Graph />
           </div>

@@ -10,14 +10,15 @@ const TablesContainer = styled.div`
   position: relative;
   width: calc(100vw - 340px);  // ajustar o espaço com base no left
   margin-left: 340px;
+  background-color: #f5f7fa;
   /* left: 300px; */
   /* top: 0%; */
 `;
 
 const Content = styled.div`
   flex-grow: 1;
-  background-color: #f5f7fa;
   padding: 20px;
+  max-width: 2000px;
 `;
 
 // const DashboardContainer = styled.div`

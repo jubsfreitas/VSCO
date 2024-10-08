@@ -114,7 +114,6 @@
 
 
 import React from "react";
-// import './middlewares/firebase'
 import "./App.css";
 import { AuthProvider } from "./contexts/auth";
 

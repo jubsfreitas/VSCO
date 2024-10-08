@@ -1,6 +1,7 @@
 // SensorTable.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import io from 'socket.io-client';
 
 const TableContainer = styled.div`
   background-color: white;
@@ -74,6 +75,46 @@ const Sensor = styled.div`
 `;
 
 const SensorTable: React.FC<{text?: string}> = ({text}) => {
+  const [data, setData] = useState({
+    tdsValue: '',
+    distancia: '',
+    temperatura: '',
+    fluxo: ''
+  });
+
+  // console.log(data)
+
+  useEffect(() => {
+    const socket = io('http://localhost:5174'); // Altere para o URL do seu servidor se necessário
+
+    socket.on('sensorData', (sensorData: string) => {
+      console.log('Dados recebidos do servidor:', sensorData); // Log de dados recebidos
+      const lines = sensorData.split('\n');
+      console.log('Linhas processadas:', lines); // Log das linhas processadas
+      const updatedData: { [key: string]: string } = {};
+    
+      lines.forEach((line: string) => {
+        const parts = line.split(':');
+        if (parts.length > 1) {
+          const key = parts[0].trim();
+          const value = parts[1].trim();
+          updatedData[key] = value;
+        }
+      });
+    
+      console.log('Dados atualizados:', updatedData); // Log dos dados atualizados
+      setData(prevData => {
+        const newData = { ...prevData, ...updatedData };
+        console.log('Dados do estado atualizados:', newData); // Log do novo estado
+        return newData;
+      });
+    });    
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+  
   const sensors = [
     { name: 'Sensor Ultrassônico', model: 'HC-SR04', status: 'Online', date: '14/06/21' },
     { name: 'Sensor de Fluxo', model: 'YF-S401', status: 'Online', date: '14/06/21' },
@@ -132,6 +173,13 @@ const SensorTable: React.FC<{text?: string}> = ({text}) => {
           ))}
         </tbody>
       </Table>
+      <div style={{background: 'red'}}>
+        <h1>Dados do Sensor</h1>
+        <p>TDS Value: {data.tdsValue} ppm</p>
+        <p>Distância: {data.distancia} cm</p>
+        <p>Temperatura: {data.temperatura} °C</p>
+        <p>Fluxo de água: {data.fluxo} L/h</p>
+      </div>
     </TableContainer>
   );
 };
